@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/lamh85/orca#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg-promise": "^10.4.4"
   }
 }
