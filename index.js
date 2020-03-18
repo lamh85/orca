@@ -1,7 +1,16 @@
 const express = require('express')
+const { Pool } = require('pg')
 
 const app = express()
 const port = 3000
+
+const pool = new Pool({
+  user: process.env.PGEUSER,
+  host: process.env.PGEHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT
+})
 
 app.get('/', (request, response) => {
   console.log('RECEIVED THIS REQUEST ===========')

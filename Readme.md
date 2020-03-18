@@ -1,3 +1,7 @@
+# Development Guides
+
+
+
 # Features
 
 ## Compare expenses and income
@@ -15,10 +19,6 @@ EXPENSES
 * heating
 * laptop fund
 
-Common attributes
-* Item name
-* Annual amount
-
 ### Technical Design
 
 Create
@@ -34,3 +34,8 @@ Update
 Delete
 * User deletes
 * App updates totals
+
+Common attributes
+* Item name
+* Annual amount
+
