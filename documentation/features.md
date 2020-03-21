@@ -43,7 +43,7 @@ Branstorm data entities
   * Disbursement length - integer
   * Disbursement units - days/months/years
 
-
+We should keep both tables separate.
 
 ### Flows
 
