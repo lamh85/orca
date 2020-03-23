@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "migrate": "node-pg-migrate"
+    "migrate-new": "node-pg-migrate",
+    "migrate-run": "scripts/migrate-up.js"
   },
   "repository": {
     "type": "git",
