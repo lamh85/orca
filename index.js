@@ -5,8 +5,8 @@ const app = express()
 const port = 3000
 
 const pool = new Pool({
-  user: process.env.PGEUSER,
-  host: process.env.PGEHOST,
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT
