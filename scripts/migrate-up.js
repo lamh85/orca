@@ -1,9 +1,9 @@
 import { exec } from 'child_process'
 
-const user = process.env.PGEUSER,
-const host = process.env.PGEHOST,
-const database = process.env.PGDATABASE,
-const password = process.env.PGPASSWORD,
+const user = process.env.PGEUSER
+const host = process.env.PGEHOST
+const database = process.env.PGDATABASE
+const password = process.env.PGPASSWORD
 const port = process.env.PGPORT
 
 // Example
