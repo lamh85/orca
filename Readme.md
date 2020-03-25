@@ -15,8 +15,7 @@ https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to
 
 https://github.com/salsita/node-pg-migrate
 
-REQUIRED
-1. All the logic in the migration file must be wrapped in either of these exports:
+All the logic in the migration file must be wrapped in either of these exports:
 
 ```javascript
 exports.shorthands = undefined
@@ -26,4 +25,11 @@ exports.up = function up(pgm) {}
 exports.down = function down(pgm) {}
 ```
 
-2. If the migration file is written in ES6, then the file extension must be `cjs` if `package.json` has this configuration: `"type": "module"`.
+If the migration file is written in ES6, then the file extension must be `cjs` if `package.json` has this configuration: `"type": "module"`.
+
+### Otherwise, you might receive these errors
+
+Some of these are not the exact words. I forgot to copy them before fixing the error.
+* `pgm` is not defined
+* Rename your file to `cjs` or remove `"type": "module"`
+* `Warning: require() of ES modules is not supported`
