@@ -7,6 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
+    "console": "node console.cjs",
     "migrate": "node-pg-migrate",
     "migrate-up": "DATABASE_URL=postgres://$(grep PGUSER .env | cut -d '=' -f 2):$(grep PGPASSWORD .env | cut -d '=' -f 2)@$(grep PGHOST .env | cut -d '=' -f 2):$(grep PGPORT .env | cut -d '=' -f 2)/$(grep PGDATABASE .env | cut -d '=' -f 2) npm run migrate up"
   },
