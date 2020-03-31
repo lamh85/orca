@@ -2,6 +2,11 @@
 
 ## Node
 
+### `import` and `require`
+
+How to use both:
+<br/>https://stackoverflow.com/questions/59443525/require-not-working-in-module-type-nodejs-script
+
 ### Should use version 13 to support ES6.
 
 Compatibility with ES6:

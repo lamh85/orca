@@ -1,5 +1,5 @@
-import { pool } from './common/databasePool'
-import { toSqlArray } from './common/formatters'
+import { pool } from './common/databasePool.js'
+import { toSqlArray } from './common/formatters.js'
 
 const WHITELISTED_COLUMNS = [
   'name', 'description', 'amount', 'period_length', 'period_units'
@@ -10,7 +10,7 @@ const areValidColumns = request => {
 }
 
 // eg: INSERT INTO expenses (name, description, amount, period_length, period_units) VALUES ('test name', 'test description', 99, 5, 'months');
-export const create = params => {
+export const create = async params => {
   const columns = Object.keys(params)
 
   if (!areValidColumns(columns)) {

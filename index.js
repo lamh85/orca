@@ -1,4 +1,7 @@
+import { require } from './helpers/nodeHelpers.js'
+
 const express = require('express')
+import * as expensesController from './app/controllers/expensesController.js'
 
 const app = express()
 const port = 3000
@@ -9,5 +12,7 @@ app.get('/', (request, response) => {
 
   response.send('Response!!!')
 })
+
+app.post('/expenses', expensesController.create)
 
 app.listen(port, () => console.log('LISTENING TO PORT ', port))
