@@ -1,10 +1,9 @@
-// import { require } from './helpers/nodeHelpers.js'
-
-// const express = require('express')
 import express from 'express'
+
 import * as expensesController from './app/controllers/expensesController.js'
 
 const app = express()
+app.use(express.json())
 const port = 3000
 
 app.get('/', (request, response) => {

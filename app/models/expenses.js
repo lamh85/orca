@@ -24,7 +24,7 @@ export const create = async params => {
   const values = Object.values(params)
 
   try {
-    const res = await pool.query(columnsArray, values)
+    const res = await pool.query(queryTemplate, values)
     console.log(res.rows[0])
   } catch (err) {
     console.log(err.stack)
