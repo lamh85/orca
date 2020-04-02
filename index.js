@@ -1,6 +1,7 @@
-import { require } from './helpers/nodeHelpers.js'
+// import { require } from './helpers/nodeHelpers.js'
 
-const express = require('express')
+// const express = require('express')
+import express from 'express'
 import * as expensesController from './app/controllers/expensesController.js'
 
 const app = express()
