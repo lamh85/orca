@@ -7,5 +7,5 @@ export const toSqlArray = array => {
 
 export const toSqlPlaceholder = array => {
   const itemsMapped = array.map((item, index) => '$' + (index + 1))
-  return toSqlArray(itemsMapped)
+  return '( ' + itemsMapped.join(',') + ' )'
 }
