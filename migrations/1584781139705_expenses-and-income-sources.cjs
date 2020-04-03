@@ -50,4 +50,9 @@ exports.up = function up(pgm) {
     'expenses',
     commonColumns('expenses')
   )
+
+  pgm.createTable(
+    'income_sources',
+    commonColumns('income_sources')
+  )
 }

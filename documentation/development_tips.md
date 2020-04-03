@@ -9,7 +9,7 @@ DEVELOPMENT TIPS 💻 🚀
 How to use both:
 <br/>https://stackoverflow.com/questions/59443525/require-not-working-in-module-type-nodejs-script
 
-# Should use version 13 to support ES6.
+# Should use Node 13 to support ES6.
 
 Compatibility with ES6:
 <br/>https://stackoverflow.com/questions/45854169/how-can-i-use-an-es6-import-in-node
