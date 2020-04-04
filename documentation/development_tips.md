@@ -4,29 +4,30 @@ DEVELOPMENT TIPS 💻 🚀
 ---
 ```
 
-# `import` and `require`
+# Node
 
-How to use both:
+Child processes
+<br/>https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/
+
+## ES6
+
+How to use both `import` and `require`
 <br/>https://stackoverflow.com/questions/59443525/require-not-working-in-module-type-nodejs-script
 
-# Should use Node 13 to support ES6.
+Should use Node 13 to support ES6.
 
 Compatibility with ES6:
 <br/>https://stackoverflow.com/questions/45854169/how-can-i-use-an-es6-import-in-node
 
-# Child processes
+# Postgres
 
-https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/
+`node-postgress`
+<br/>https://node-postgres.com/
 
-# `node-postgress`
+Parsing PG error object
+<br/>https://kb.objectrocket.com/postgresql/postgresql-node-errors-949
 
-https://node-postgres.com/
-
-# Parsing PG error object
-
-https://kb.objectrocket.com/postgresql/postgresql-node-errors-949
-
-# Migrations
+## Migrations
 
 https://github.com/salsita/node-pg-migrate
 
