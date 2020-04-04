@@ -31,10 +31,8 @@ export const create = async params => {
 
   try {
     const res = await pool.query(queryTemplate, values)
-    // debugger
     return res
   } catch (err) {
-    // debugger
     return err
   }
 }

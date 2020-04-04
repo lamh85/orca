@@ -22,6 +22,10 @@ https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to
 
 https://node-postgres.com/
 
+# Parsing PG error object
+
+https://kb.objectrocket.com/postgresql/postgresql-node-errors-949
+
 # Migrations
 
 https://github.com/salsita/node-pg-migrate
