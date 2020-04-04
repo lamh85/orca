@@ -4,10 +4,11 @@ import pg from 'pg'
 const { Pool } = pg
 
 const pool = new Pool({
-  user: envVariables.pgUser,
-  host: envVariables.pgHost,
-  database: envVariables.pgDatabase,
-  port: envVariables.pgPort
+  user: envVariables.PG_USER,
+  host: envVariables.PG_HOST,
+  database: envVariables.PG_DATABASE,
+  password: envVariables.PG_PASSWORD || null,
+  port: envVariables.PG_PORT
 })
 
 export { pool }

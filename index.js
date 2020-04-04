@@ -5,7 +5,7 @@ import { pool } from './app/models/common/databasePool.js'
 
 const validateDbName = connectedDb => {
   console.log('------------------------')
-  if (connectedDb != envVariables.pgDatabase) {
+  if (connectedDb != envVariables.PG_DATABASE) {
     console.log(`Connected to wrong database! Connected to: ${connectedDb}`)
   } else {
     console.log('Connected to correct database!')
@@ -41,5 +41,5 @@ app.get('/', (request, response) => {
 
 app.post('/expenses', expensesController.create)
 
-const port = envVariables.appPort
+const port = envVariables.APP_PORT
 app.listen(port, () => console.log('LISTENING TO PORT ', port))
