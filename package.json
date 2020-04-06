@@ -9,7 +9,7 @@
     "start": "node --inspect index.js",
     "console": "node console.cjs",
     "migrate": "node-pg-migrate",
-    "migrate-up": "DATABASE_URL=postgres://$(grep PGUSER .env | cut -d '=' -f 2):$(grep PGPASSWORD .env | cut -d '=' -f 2)@$(grep PGHOST .env | cut -d '=' -f 2):$(grep PGPORT .env | cut -d '=' -f 2)/$(grep PGDATABASE .env | cut -d '=' -f 2) npm run migrate up"
+    "migrate-up": "DATABASE_URL=postgres://$(grep PG_USER .env | cut -d '=' -f 2):$(grep PG_PASSWORD .env | cut -d '=' -f 2)@$(grep PG_HOST .env | cut -d '=' -f 2):$(grep PG_PORT .env | cut -d '=' -f 2)/$(grep PG_DATABASE .env | cut -d '=' -f 2) npm run migrate up"
   },
   "repository": {
     "type": "git",
