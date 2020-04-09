@@ -1,33 +1,5 @@
-import { toInsertQuery } from './queryBuilders.js'
+import { toInsertQuery, toUpdateQuery } from './queryBuilders.js'
 import { runPgQuery } from './pgInterface.js'
-
-// class Model {
-//   constructor({ tableName, whiteListedColumns }) {
-//     this.tableName = tableName
-//     this.whiteListedColumns = whiteListedColumns
-//   }
-
-//   create(params) {
-//   }
-
-//   get(params) {
-//     if (typeof params == 'object') {
-//       column = Object.keys(params)[0]
-//       value = Object.values(params)[0]
-//     }
-//   }
-
-//   index(params) {
-//   }
-
-//   update() {
-
-//   }
-
-//   destroy() {
-
-//   }
-// }
 
 const generateCreateFunction = ({
   tableName,
@@ -35,8 +7,21 @@ const generateCreateFunction = ({
 }) => params => {
   const { queryTemplate, values } = toInsertQuery({
     rowObj: params,
-    tableName: this.tableName,
-    validColumns: this.whiteListedColumns
+    tableName,
+    validColumns: whiteListedColumns
+  })
+
+  return runPgQuery({ queryTemplate, values })
+}
+
+const generateUpdateFunction = ({ tableName }) => ({
+  id,
+  params
+}) => {
+  const { queryTemplate, values } = toUpdateQuery({
+    id,
+    params,
+    tableName
   })
 
   return runPgQuery({ queryTemplate, values })
@@ -44,7 +29,8 @@ const generateCreateFunction = ({
 
 const generateModel = ({ tableName, whiteListedColumns }) => {
   return {
-    create: generateCreateFunction({ tableName, whiteListedColumns })
+    create: generateCreateFunction({ tableName, whiteListedColumns }),
+    updat: generateUpdateFunction({ tableName })
   }
 }
 

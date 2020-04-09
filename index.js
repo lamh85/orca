@@ -1,7 +1,7 @@
 import express from 'express'
 import { envVariables } from './config.js'
 import * as expensesController from './app/controllers/expensesController.js'
-import { pool } from './app/models/common/databasePool.js'
+import { pool } from './app/model/databasePool.js'
 
 const validateDbName = connectedDb => {
   console.log('------------------------')
@@ -14,7 +14,6 @@ const validateDbName = connectedDb => {
 
 // node-postgress connects to wrong database if pool is configured with the wrong password.
 // Therefore, need to check if connected to correct database
-// let connectedDb = ''
 const getDatbaseName = () => {
   pool.query('SELECT * FROM current_database();', (err, res) => {
     if (err) {
