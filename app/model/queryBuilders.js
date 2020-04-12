@@ -1,15 +1,15 @@
 import { toSqlArray, toSqlPlaceholder } from './formatters.js'
 
-const areValidColumns = ({ queryColumns, validColumns }) => {
-  return queryColumns.every(item => validColumns.includes(item))
+const validateColumns = ({ queryColumns, validColumns }) => {
+  const isValid = queryColumns.every(item => validColumns.includes(item))
+
+  if (!isValid) 'At least one invalid column.'
 }
 
 export const toInsertQuery = ({ rowObj, tableName, validColumns }) => {
   const queryColumns = Object.keys(rowObj)
 
-  if (!areValidColumns({ queryColumns, validColumns })) {
-    return 'At least one invalid column.'
-  }
+  validateColumns({ queryColumns, validColumns })
 
   const columnsArray = toSqlArray(queryColumns)
   const placeHolder = toSqlPlaceholder(queryColumns)
@@ -42,8 +42,10 @@ export const toSelectQuery = ({ modifiers, tableName }) => {
   return { queryTemplate, values }
 }
 
-export const toUpdateQuery = ({ id, params, tableName }) => {
+export const toUpdateQuery = ({ id, params, tableName, whiteListedColumns }) => {
   const columnsArray = toSqlArray(columns)
+  validateColumns({ columnsArray, whiteListedColumns })
+
   const placeHolder = toSqlPlaceholder(columns)
   const rowValues = Object.keys(params)
 

@@ -14,14 +14,18 @@ const generateCreateFunction = ({
   return runPgQuery({ queryTemplate, values })
 }
 
-const generateUpdateFunction = ({ tableName }) => ({
+const generateUpdateFunction = ({
+  tableName,
+  whiteListedColumns
+}) => ({
   id,
   params
 }) => {
   const { queryTemplate, values } = toUpdateQuery({
     id,
     params,
-    tableName
+    tableName,
+    whiteListedColumns
   })
 
   return runPgQuery({ queryTemplate, values })
@@ -30,7 +34,7 @@ const generateUpdateFunction = ({ tableName }) => ({
 const generateModel = ({ tableName, whiteListedColumns }) => {
   return {
     create: generateCreateFunction({ tableName, whiteListedColumns }),
-    updat: generateUpdateFunction({ tableName })
+    update: generateUpdateFunction({ tableName, whiteListedColumns })
   }
 }
 

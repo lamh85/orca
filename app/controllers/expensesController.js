@@ -12,3 +12,8 @@ export const create = async (request, response) => {
   console.log(modelResponse)
   response.send(modelResponse)
 }
+
+export const update = async (request, response) => {
+  const modelResponse = await model.update(request.body)
+  response.send(modelResponse)
+}
