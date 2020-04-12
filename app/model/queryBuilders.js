@@ -40,16 +40,23 @@ export const toSelectQuery = ({ modifiers, tableName }) => {
 export const toUpdateQuery = ({ id, params, tableName, whiteListedColumns }) => {
   validateId(id)
 
-  const columnsArray = toSqlArray(columns)
-  validateColumns({ columnsArray, whiteListedColumns })
+  const paramKeys = Object.keys(params)
+  const columnsArray = toSqlArray(paramKeys)
+  validateColumns({
+    queryColumns: paramKeys,
+    validColumns: whiteListedColumns
+  })
 
-  const placeHolder = toSqlPlaceholder(columns)
-  const rowValues = Object.keys(params)
+  const placeHolder = toSqlPlaceholder(paramKeys)
+  const rowValues = Object.values(params)
 
+  // Must use ROW() to prevent this error:
+    // source for a multiple-column UPDATE item must be a sub-SELECT or ROW() expression
+  // More info: https://www.postgresql.org/message-id/22434.1508854720%40sss.pgh.pa.us
   const queryTemplate = `
     UPDATE ${tableName}
-    SET ${columnsArray} = ${placeHolder}
-    WHERE id = ${rowValues.length + 1}
+    SET ${columnsArray} = ROW(${placeHolder})
+    WHERE id = $${rowValues.length + 1}
     RETURNING *;
   `
 
