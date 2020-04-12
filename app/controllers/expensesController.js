@@ -1,4 +1,5 @@
 import { generateModel } from '../model/modelFactory.js'
+import { handleError } from './errorHandler.js'
 
 const tableName = 'expenses'
 const whiteListedColumns = [
@@ -8,12 +9,24 @@ const whiteListedColumns = [
 const model = generateModel({ tableName, whiteListedColumns })
 
 export const create = async (request, response) => {
-  const modelResponse = await model.create(request.body)
-  console.log(modelResponse)
-  response.send(modelResponse)
+  try {
+    const modelResponse = await model.create(request.body)
+    response.send(modelResponse)
+  } catch (error) {
+    handleError({ error, response })
+  }
 }
 
 export const update = async (request, response) => {
-  const modelResponse = await model.update(request.body)
-  response.send(modelResponse)
+  try {
+    const { id } = request.params
+    const modelResponse = await model.update({
+      id,
+      params: request.body
+    })
+
+    response.send(modelResponse)
+  } catch (error) {
+    handleError({ error, response })
+  }
 }
