@@ -1,21 +1,21 @@
-import { toSqlArray, toSqlPlaceholder } from './formatters.js'
+import { toQueryArrays } from './formatters.js'
 import { validateColumns, validateId } from './queryValidators.js'
 
 export const toInsertQuery = ({ rowObj, tableName, validColumns }) => {
-  const queryColumns = Object.keys(rowObj)
+  const {
+    columns,
+    values,
+    columnsString,
+    placeholder
+  } = toQueryArrays(rowObj)
 
-  validateColumns({ queryColumns, validColumns })
-
-  const columnsArray = toSqlArray(queryColumns)
-  const placeHolder = toSqlPlaceholder(queryColumns)
+  validateColumns({ queryColumns: columns, validColumns })
 
   const queryTemplate = `
-    INSERT INTO ${tableName} ${columnsArray}
-      VALUES ${placeHolder}
+    INSERT INTO ${tableName} ${columnsString}
+      VALUES ${placeholder}
     RETURNING *;
   `
-
-  const values = Object.values(rowObj)
 
   return { queryTemplate, values }
 }
@@ -40,29 +40,31 @@ export const toSelectQuery = ({ modifiers, tableName }) => {
 export const toUpdateQuery = ({ id, params, tableName, whiteListedColumns }) => {
   validateId(id)
 
-  const paramKeys = Object.keys(params)
-  const columnsArray = toSqlArray(paramKeys)
+  const {
+    columns,
+    values,
+    columnsString,
+    placeholder
+  } = toQueryArrays(params)
+
   validateColumns({
-    queryColumns: paramKeys,
+    queryColumns: columns,
     validColumns: whiteListedColumns
   })
 
-  const placeHolder = toSqlPlaceholder(paramKeys)
-  const rowValues = Object.values(params)
-
   // Must use ROW() to prevent this error:
-    // source for a multiple-column UPDATE item must be a sub-SELECT or ROW() expression
+  //   source for a multiple-column UPDATE item must be a sub-SELECT or ROW() expression
   // More info: https://www.postgresql.org/message-id/22434.1508854720%40sss.pgh.pa.us
   const queryTemplate = `
     UPDATE ${tableName}
-    SET ${columnsArray} = ROW(${placeHolder})
-    WHERE id = $${rowValues.length + 1}
+    SET ${columnsString} = ROW(${placeholder})
+    WHERE id = $${values.length + 1}
     RETURNING *;
   `
 
-  const values = [...rowValues, id]
+  const valuesWithId = [...values, id]
 
-  return { queryTemplate, values }
+  return { queryTemplate, values: valuesWithId }
 }
 
 export const toDeleteQuery = ({ id, tableName }) => {
