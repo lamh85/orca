@@ -1,7 +1,13 @@
-const handleError = ({ error, response }) => {
-  const { message, httpCode } = error
+const httpCodeLookup = {
+  QueryError: 400
+}
+
+const handleError = (error) => {
+  const constructorName = error.constructor.name
+  const httpCode = httpCodeLookup[constructorName]
   const validCode = httpCode || 500
-  response.status(validCode).send(message)
+
+  response.status(validCode).send(error.message)
 }
 
 export { handleError }

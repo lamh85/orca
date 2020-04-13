@@ -1,6 +1,4 @@
-import { ErrorWrapper } from '../ErrorWrapper.js'
-
-class QueryError extends ErrorWrapper {
+class QueryError extends Error {
   constructor(message) {
     super({
       message,
