@@ -70,7 +70,8 @@ export const toUpdateQuery = ({ id, params, tableName, whiteListedColumns }) => 
 export const toDeleteQuery = ({ id, tableName }) => {
   const queryTemplate = `
     DELETE FROM ${tableName}
-    WHERE id = $1;
+    WHERE id = $1
+    RETURNING *;
   `
 
   const values = [id]

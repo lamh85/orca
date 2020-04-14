@@ -14,7 +14,7 @@ app.get('/', (request, response) => {
 })
 
 app.post('/expenses', expensesController.create)
-
+app.get('/expenses', expensesController.index)
 app.patch('/expenses/:id', expensesController.update)
 
 const port = envVariables.APP_PORT

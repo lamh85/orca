@@ -31,10 +31,20 @@ const generateUpdateFunction = ({
   return runPgQuery({ queryTemplate, values })
 }
 
+const generateWhereFunction = tableName => modifiers => {
+  const { queryTemplate, values } = toSelectQuery({
+    modifiers,
+    tableName
+  })
+
+  return runPgQuery({ queryTemplate, values })
+}
+
 const generateModel = ({ tableName, whiteListedColumns }) => {
   return {
     create: generateCreateFunction({ tableName, whiteListedColumns }),
-    update: generateUpdateFunction({ tableName, whiteListedColumns })
+    update: generateUpdateFunction({ tableName, whiteListedColumns }),
+    where: generateWhereFunction(tableName)
   }
 }
 

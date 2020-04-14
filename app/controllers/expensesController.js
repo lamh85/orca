@@ -17,6 +17,15 @@ export const create = async (request, response) => {
   }
 }
 
+export const index = async (request, response) => {
+  try {
+    const modelResponse = await model.where(request.body)
+    response.send(modelResponse)
+  } catch (error) {
+    handleError({ error, response })
+  }
+}
+
 export const update = async (request, response) => {
   try {
     const { id } = request.params
