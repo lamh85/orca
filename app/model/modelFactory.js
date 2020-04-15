@@ -1,4 +1,8 @@
-import { toInsertQuery, toUpdateQuery } from './queryBuilders.js'
+import {
+  toInsertQuery,
+  toUpdateQuery,
+  toSelectQuery
+} from './queryBuilders.js'
 import { runPgQuery } from './pgInterface.js'
 
 const generateCreateFunction = ({

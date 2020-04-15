@@ -6,12 +6,13 @@ const parseError = errorResponse => {
 
 export const runPgQuery = async ({ queryTemplate, values }) => {
   const response = await pool.query(queryTemplate, values)
+  const { rows } = response
 
-  if (response.rows) {
-    return response.rows[0]
-  } else {
-    return parseError(response)
-  }
+  if (!rows) return parseError(response)
+
+  if (rows.length == 0) return rows[0]
+
+  return rows
 }
 
 // Example error object:

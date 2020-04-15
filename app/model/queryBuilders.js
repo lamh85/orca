@@ -1,5 +1,9 @@
 import { toQueryArrays } from './formatters.js'
-import { validateColumns, validateId } from './queryValidators.js'
+import {
+  validateColumns,
+  validateId,
+  validateSelectQuery
+} from './queryValidators.js'
 
 export const toInsertQuery = ({ rowObj, tableName, validColumns }) => {
   const {
@@ -22,17 +26,34 @@ export const toInsertQuery = ({ rowObj, tableName, validColumns }) => {
 
 export const toSelectQuery = ({ modifiers, tableName }) => {
   const { pageNumber, pageSize, sortColumn, sortDirection } = modifiers
+  validateSelectQuery({ sortColumn, sortDirection })
+
+  let queryTemplate = `SELECT * FROM ${tableName};`
+  let placeholderCounter = 1
+  let values = []
+
+  if (sortColumn) {
+    queryTemplate +=
+      ` ORDER BY $${placeholderCounter} $${placeholderCounter + 1}`
+    values = [...values, sortColumn, sortDirection]
+    placeholderCounter += 2
+  }
+
   const limit = pageSize
+  if (limit) {
+    queryTemplate += ` LIMIT $${placeholderCounter}`
+    values = [...values, limit]
+    placeholderCounter += 1
+  }
+
   const offset = (pageNumber - 1) * limit
+  if (offset) {
+    queryTemplate += ` OFFSET $${placeholderCounter}`
+    values = [...values, offset]
+  }
 
-  const queryTemplate = `
-    SELECT * FROM ${tableName}
-    ORDER BY $1 $2
-    LIMIT $3
-    OFFSET $4;
-  `
-
-  const values = [sortColumn, sortDirection, limit, offset]
+  console.log(queryTemplate)
+  console.log(values)
 
   return { queryTemplate, values }
 }

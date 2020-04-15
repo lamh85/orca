@@ -21,4 +21,16 @@ const validateId = id => {
   }
 }
 
-export { validateColumns, validateId }
+const validateSelectQuery = ({ sortColumn, sortDirection }) => {
+  const allArePresent = [sortColumn, sortDirection].every(item => item)
+  if (allArePresent) return true
+
+  const allAreMissing = [sortColumn, sortDirection].every(item => !item)
+  if (allAreMissing) return true
+
+  throw new QueryError(
+    'SELECT query: either sort column or sort direction is missing.'
+  )
+}
+
+export { validateColumns, validateId, validateSelectQuery }
