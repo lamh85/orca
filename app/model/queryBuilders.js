@@ -89,6 +89,8 @@ export const toUpdateQuery = ({ id, params, tableName, whiteListedColumns }) => 
 }
 
 export const toDeleteQuery = ({ id, tableName }) => {
+  validateId(id)
+
   const queryTemplate = `
     DELETE FROM ${tableName}
     WHERE id = $1

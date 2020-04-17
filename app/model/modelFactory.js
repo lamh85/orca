@@ -1,7 +1,8 @@
 import {
   toInsertQuery,
   toUpdateQuery,
-  toSelectQuery
+  toSelectQuery,
+  toDeleteQuery
 } from './queryBuilders.js'
 import { runPgQuery } from './pgInterface.js'
 
@@ -44,11 +45,21 @@ const generateWhereFunction = tableName => modifiers => {
   return runPgQuery({ queryTemplate, values })
 }
 
+const generateDestroyFunction = tableName => id => {
+  const { queryTemplate, values } = toDeleteQuery({
+    id,
+    tableName
+  })
+
+  return runPgQuery({ queryTemplate, values })
+}
+
 const generateModel = ({ tableName, whiteListedColumns }) => {
   return {
     create: generateCreateFunction({ tableName, whiteListedColumns }),
     update: generateUpdateFunction({ tableName, whiteListedColumns }),
-    where: generateWhereFunction(tableName)
+    where: generateWhereFunction(tableName),
+    destroy: generateDestroyFunction(tableName)
   }
 }
 
