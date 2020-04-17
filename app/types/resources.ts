@@ -1,3 +1,16 @@
+interface IsUnique {
+  id: number
+}
+
+// https://www.typescriptlang.org/docs/handbook/mixins.html
+interface IsFinancialFlow extends IsUnique {
+  name: string,
+  description: string,
+  amount: number,
+  period_length: number,
+  period_units: PeriodUnits
+}
+
 // https://medium.com/@katbusch/typescript-enums-explained-e5f9a101afc9
 enum PeriodUnits {
   days = 'days',
@@ -6,11 +19,7 @@ enum PeriodUnits {
   years = 'years'
 }
 
-export interface Expense {
-  id: number,
-  name: string,
-  description: string,
-  amount: number,
-  period_length: number,
-  period_units: PeriodUnits
+namespace Resource {
+  export interface Expense extends IsFinancialFlow {}
+  export interface IncomeSource extends IsFinancialFlow {}
 }
