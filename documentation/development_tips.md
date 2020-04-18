@@ -19,6 +19,11 @@ Should use Node 13 to support ES6.
 Compatibility with ES6:
 <br/>https://stackoverflow.com/questions/45854169/how-can-i-use-an-es6-import-in-node
 
+# Typescript
+
+Classes vs Interfaces
+<br/>https://ultimatecourses.com/blog/classes-vs-interfaces-in-typescript
+
 # Postgres
 
 `node-postgress`
