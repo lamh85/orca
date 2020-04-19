@@ -1,3 +1,6 @@
+// TODO: I created too many types for practice.
+// Don't have to use them yet.
+
 enum SortDirection {
   asc = 'asc',
   desc = 'desc'

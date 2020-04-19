@@ -4,7 +4,14 @@ const parseError = errorResponse => {
 
 }
 
-export const runPgQuery = async ({ queryTemplate, values }) => {
+interface PgQueryArgs {
+  queryTemplate: string,
+  values: Array<string | number>
+}
+
+export const runPgQuery = async (
+  { queryTemplate, values }: PgQueryArgs
+) => {
   const response = await pool.query(queryTemplate, values)
   const { rows } = response
 

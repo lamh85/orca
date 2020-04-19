@@ -1,6 +1,11 @@
+// TODO: I created too many types for practice.
+// Don't have to use them yet.
+
 interface IsUnique {
   id: number
 }
+
+type PeriodUnits = 'days' | 'weeks' | 'months' | 'years'
 
 // https://www.typescriptlang.org/docs/handbook/mixins.html
 interface IsFinancialFlow extends IsUnique {
@@ -9,14 +14,6 @@ interface IsFinancialFlow extends IsUnique {
   amount: number,
   period_length: number,
   period_units: PeriodUnits
-}
-
-// https://medium.com/@katbusch/typescript-enums-explained-e5f9a101afc9
-enum PeriodUnits {
-  days = 'days',
-  weeks = 'weeks',
-  months = 'months',
-  years = 'years'
 }
 
 namespace Resource {

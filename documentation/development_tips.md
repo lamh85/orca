@@ -23,6 +23,10 @@ Compatibility with ES6:
 
 Classes vs Interfaces
 <br/>https://ultimatecourses.com/blog/classes-vs-interfaces-in-typescript
+* Classes specify behaviour, types just ensure that the inputs and outputs have th correct datatype. Neither could completely substitute the other.
+
+Sandbox
+</br>https://www.typescriptlang.org/play
 
 # Postgres
 
