@@ -27,6 +27,25 @@ Compatibility with ES6:
 Parsing PG error object
 <br/>https://kb.objectrocket.com/postgresql/postgresql-node-errors-949
 
+## Changing PG's port:
+
+Show the config file:
+```sh
+psql -p PORT -U USERNAME -c 'SHOW config_file'
+```
+
+HOWEVER, this config might be overwritten by an environment variable. See below.
+
+`psql` might not use the .conf config file. Will need to set the environmental variable like this. More info here: https://dba.stackexchange.com/questions/24154/postgresql-change-default-port-used-by-utilites-like-psql-createdb-etc
+```sh
+PGPORT=9876; export PGPORT
+```
+
+The above is the equivalent to:
+```sh
+psql -p 9876
+```
+
 ## Migrations
 
 https://github.com/salsita/node-pg-migrate
