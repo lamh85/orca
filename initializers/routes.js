@@ -14,6 +14,7 @@ app.get('/', (request, response) => {
 })
 
 app.post('/expenses', expensesController.create)
+app.post('/expenses/dummy', expensesController.createDummy)
 app.get('/expenses', expensesController.index)
 app.patch('/expenses/:id', expensesController.update)
 app.delete('/expenses/:id', expensesController.destroy)

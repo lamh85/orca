@@ -4,6 +4,12 @@ DEVELOPMENT TIPS 💻 🚀
 ---
 ```
 
+# Design Patterns
+
+Use composition over
+* Imperative pattern
+* Inheritance pattern
+
 # Node
 
 Child processes

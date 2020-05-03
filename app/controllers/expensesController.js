@@ -1,6 +1,5 @@
 import { generateModel } from '../model/modelFactory.js'
 import { handleError } from './errorHandler.js'
-import { request } from 'express'
 
 const tableName = 'expenses'
 const whiteListedColumns = [
@@ -16,6 +15,10 @@ export const create = async (request, response) => {
   } catch (error) {
     handleError({ error, response })
   }
+}
+
+export const createDummy = async (request, response) => {
+
 }
 
 export const index = async (request, response) => {
