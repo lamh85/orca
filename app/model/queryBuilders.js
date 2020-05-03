@@ -52,8 +52,6 @@ export const toSelectQuery = ({ modifiers, tableName }) => {
     values = [...values, offset]
   }
 
-  console.log(queryTemplate)
-  console.log(values)
 
   return { queryTemplate, values }
 }

@@ -1,5 +1,6 @@
 import { generateModel } from '../model/modelFactory.js'
 import { handleError } from './errorHandler.js'
+import { generateDummy } from '../../fixtures/expenses.js'
 
 const tableName = 'expenses'
 const whiteListedColumns = [
@@ -18,7 +19,14 @@ export const create = async (request, response) => {
 }
 
 export const createDummy = async (request, response) => {
-
+  try {
+    const dummy = generateDummy(request.body)
+    const modelResponse = await model.create(dummy)
+    response.send(modelResponse)
+  } catch (error) {
+    handleError({ error, response })
+    response.send(error)
+  }
 }
 
 export const index = async (request, response) => {
