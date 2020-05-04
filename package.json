@@ -12,7 +12,8 @@
     "start": "node --inspect index.js",
     "console": "node console.cjs",
     "migrate": "node-pg-migrate",
-    "migrate-up": "DATABASE_URL=postgres://$(grep PG_USER .env | cut -d '=' -f 2):$(grep PG_PASSWORD .env | cut -d '=' -f 2)@$(grep PG_HOST .env | cut -d '=' -f 2):$(grep PG_PORT .env | cut -d '=' -f 2)/$(grep PG_DATABASE .env | cut -d '=' -f 2) npm run migrate up"
+    "migrate-up": "DATABASE_URL=postgres://$(grep PG_USER .env | cut -d '=' -f 2):$(grep PG_PASSWORD .env | cut -d '=' -f 2)@$(grep PG_HOST .env | cut -d '=' -f 2):$(grep PG_PORT .env | cut -d '=' -f 2)/$(grep PG_DATABASE .env | cut -d '=' -f 2) npm run migrate up",
+    "//": "STRETCH: a psql command that instantly connects to database: https://www.a2hosting.ca/kb/developer-corner/postgresql/connect-to-postgresql-from-the-command-line"
   },
   "repository": {
     "type": "git",
