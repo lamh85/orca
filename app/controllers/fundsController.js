@@ -1,8 +1,8 @@
 import { generateModel } from '../model/modelFactory.js'
 import { handleError } from './errorHandler.js'
-import { generateDummy } from '../../fixtures/expenses.js'
+import { generateDummy } from '../../fixtures/funds.js'
 
-const tableName = 'expenses'
+const tableName = 'funds'
 const whiteListedColumns = [
   'name', 'description', 'amount', 'period_length', 'period_units'
 ]

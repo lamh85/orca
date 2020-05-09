@@ -52,6 +52,15 @@ The above is the equivalent to:
 psql -p 9876
 ```
 
+## Generating Migration Files
+
+You might get this error message:
+```sh
+Error: ENOENT: no such file or directory, open '/Users/Hon-Lam/Projects/orca/node_modules/node-pg-migrate/templates/migration-template.cjs'
+```
+
+But your file might be created anyway.
+
 ## Migrations
 
 https://github.com/salsita/node-pg-migrate
