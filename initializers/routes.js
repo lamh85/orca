@@ -2,6 +2,7 @@ import express from 'express'
 
 import { envVariables } from '../config.js'
 import * as fundsController from '../app/controllers/fundsController.js'
+import * as fundTransfersController from '../app/controllers/fundTransfersController.js'
 
 let app = express()
 app.use(express.json())
@@ -18,6 +19,8 @@ app.post('/funds/dummy', fundsController.createDummy)
 app.get('/funds', fundsController.index)
 app.patch('/funds/:id', fundsController.update)
 app.delete('/funds/:id', fundsController.destroy)
+
+app.post('/fund_transfers/dummy', fundTransfersController.createDummy)
 
 const port = envVariables.APP_PORT
 

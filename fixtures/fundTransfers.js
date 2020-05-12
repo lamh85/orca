@@ -1,18 +1,24 @@
 import * as ipsumLorem from './ipsumLorem.js'
 import { randomAmount } from '../helpers/numberHelpers.js'
 
-export const generateDummy = (params = {}) => {
+// Must line break between arguments when specifying default
+// values for destructured arguments. Otherwise Node won't
+// run the function.
+export const generateDummy = ({
+  params = {},
+  isNegative = true
+}) => {
+  let randomNumber = randomAmount()
+  if (isNegative) {
+    randomNumber = randomNumber * -1
+  }
+
   const base = {
     name: ipsumLorem.randomWords().join(' '),
     description: ipsumLorem.randomWords().join(' '),
-    amount: randomAmount()
+    amount: randomNumber
   }
 
-  const beforeIds = { ...base, ...params }
+
+  return { ...base, ...params }
 }
-
-// source_fund_id
-// destination_fund_id
-
-// ----------------
-// transaction_date
