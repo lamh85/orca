@@ -83,3 +83,13 @@ Some of these are not the exact words. I forgot to copy them before fixing the e
 * `pgm` is not defined
 * Rename your file to `cjs` or remove `"type": "module"`
 * `Warning: require() of ES modules is not supported`
+
+## Helpful Queries
+
+```sql
+-- List table columns
+SELECT
+  COLUMN_NAME
+FROM
+  information_schema.COLUMNS where TABLE_NAME = 'fund_transfers';
+```
