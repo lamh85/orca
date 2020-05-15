@@ -3,7 +3,7 @@ import { generateDummy } from '../../fixtures/fundTransfers.js'
 
 const tableName = 'funds'
 const whiteListedColumns = [
-  'name', 'description', 'amount', 'period_length', 'period_units'
+  'id', 'name', 'description', 'transaction_date', 'amount'
 ]
 
 const model = generateModel({ tableName, whiteListedColumns })
