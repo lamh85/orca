@@ -19,6 +19,5 @@ export const generateDummy = ({
     amount: randomNumber
   }
 
-
   return { ...base, ...params }
 }

@@ -21,6 +21,7 @@ app.patch('/funds/:id', fundsController.update)
 app.delete('/funds/:id', fundsController.destroy)
 
 app.post('/fund_transfers/dummy', fundTransfersController.createDummy)
+app.get('/fund_transfers', fundTransfersController.index)
 
 const port = envVariables.APP_PORT
 

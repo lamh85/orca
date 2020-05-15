@@ -21,7 +21,21 @@ const validateId = id => {
   }
 }
 
+const validateSortCombination = ({ sortColumn, sortDirection }) => {
+  const allAreMissing = [sortColumn, sortDirection].every(item => !item)
+  if (allAreMissing) return true
+
+  if (!['asc', 'ASC', 'desc', 'DESC'].includes(sortDirection)) {
+    throw new QueryError('Sort direction is invalid.')
+  }
+
+  return true
+}
+
 const validateSelectQuery = ({ sortColumn, sortDirection }) => {
+  // TODO: validate:
+  // sortColumn should be a white listed column
+
   const allArePresent = [sortColumn, sortDirection].every(item => item)
   if (allArePresent) return true
 
