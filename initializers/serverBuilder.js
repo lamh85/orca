@@ -3,6 +3,7 @@ import express from 'express'
 import { envVariables } from '../config.js'
 import * as fundsController from '../app/controllers/fundsController.js'
 import * as fundTransfersController from '../app/controllers/fundTransfersController.js'
+import { generateRoutes as generateUserRoutes } from '../app/routes/users.js'
 
 let app = express()
 app.use(express.json())
@@ -22,6 +23,8 @@ app.delete('/funds/:id', fundsController.destroy)
 
 app.post('/fund_transfers/dummy', fundTransfersController.createDummy)
 app.get('/fund_transfers', fundTransfersController.index)
+
+generateUserRoutes(app)
 
 const port = envVariables.APP_PORT
 
