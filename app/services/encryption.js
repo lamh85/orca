@@ -1,10 +1,13 @@
 import { envVariables } from '../../config.js'
 
-const ENCRYPTION_ALGORITHM = envVariables.ENCRYPTION_ALGORITHM
+const {
+  ENCRYPTION_ALGORITHM,
+  ENCRYPTION_KEY,
+  ENCRYPTION_IV
+} = envVariables
+
 const UNENCRYPTED_ENCODING = 'utf8'
 const ENCRYPTED_ENCODING = 'hex'
-const ENCRYPTION_KEY = envVariables.ENCRYPTION_KEY
-const ENCRYPTION_IV = envVariables.ENCRYPTION_IV
 
 export const encrypt = toEncrypt => {
   const cipher = crypto.createCipheriv(
