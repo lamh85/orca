@@ -21,7 +21,7 @@ export const encrypt = toEncrypt => {
   return encrypted
 }
 
-export const ecrypt = toDecrypt => {
+export const decrypt = toDecrypt => {
   const decipher = crypto.createDecipheriv(
     ENCRYPTION_ALGORITHM,
     ENCRYPTION_KEY,
