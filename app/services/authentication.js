@@ -1,5 +1,15 @@
 import { encrypt } from './encryption.js'
 import { randomString } from '../../helpers/stringHelpers.js'
+import { generateModel } from '../model/modelFactory.js'
+
+const whiteListedColumns = [
+  'email', 'password_encrypted', 'authentication_token'
+]
+
+const model = generateModel({
+  tableName: 'users',
+  whiteListedColumns
+})
 
 const createAuthenticationToken = () => {
   return randomString(20)
@@ -14,4 +24,6 @@ export const register = ({ email, password }) => {
     password_encrypted,
     authentication_token
   }
+
+  return model.create(queryParams)
 }

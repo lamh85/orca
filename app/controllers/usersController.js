@@ -1,14 +1,7 @@
-import { generateModel } from '../model/modelFactory.js'
-
-const tableName = 'users'
-const whiteListedColumns = [
-  'email',
-  'password',
-  'password_encrypted',
-  'password_encryption_key',
-  'authentication_token'
-]
+import { register } from '../services/authentication.js'
 
 export const create = async (request, response) => {
-  const { email, password } = request.body
+  const params = request.body
+  const registrationResult = register(params)
+  response.send(registrationResult)
 }
