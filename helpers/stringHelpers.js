@@ -5,12 +5,12 @@ const randomCharacter = () => {
 }
 
 export const randomString = length => {
-  let counter = 1
+  let position = 1
   let string = ''
 
-  while (counter <= Number(length)) {
+  while (position <= Number(length)) {
     string += randomCharacter()
-    counter ++
+    position ++
   }
 
   return string

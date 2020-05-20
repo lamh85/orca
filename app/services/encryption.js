@@ -1,3 +1,4 @@
+import * as crypto from 'crypto'
 import { envVariables } from '../../config.js'
 
 const {

@@ -1,7 +1,7 @@
-const DIRECTORY_NAME = '/users'
+import { create } from '../controllers/usersController.js'
+
+const DIRECTORY_NAME = '/users/'
 
 export const generateRoutes = app => {
-  app.create(DIRECTORY_NAME, async (request, response) => {
-    console.log(request.body)
-  })
+  app.post(DIRECTORY_NAME, create)
 }
